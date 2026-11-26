@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Asiatruk — Frontend de la página web
 
-## Getting Started
+Tienda de repuestos de Asiatruk en Next.js: catálogo por categorías, marcas y modelos, ficha de cada repuesto,
+registro e inicio de sesión (también con Google) y panel de administración.
 
-First, run the development server:
+El backend está en el repositorio `pagina_asiatruck_Backend`.
+
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # y ajusta la dirección del backend
+npm run dev                  # http://localhost:3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Variables de entorno
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | Ejemplo | Uso |
+|---|---|---|
+| `NEXT_PUBLIC_API_URL` | `https://api.asiatruk.com` | Dirección del backend |
+| `NEXT_PUBLIC_GOOGLE_CLIENT_ID` | | Botón "Continuar con Google" (vacío = oculto) |
+| `NEXT_PUBLIC_STOCK_DESDE_PROFORMAS` | `1` | El stock es de solo lectura en el panel (lo controla el kárdex) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+En Vercel se configuran en **Settings → Environment Variables**. Los archivos `.env*` nunca se suben a git.
 
-## Learn More
+## Producción
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+La dirección pública de este frontend debe estar en `FRONTEND_URL` del backend.
